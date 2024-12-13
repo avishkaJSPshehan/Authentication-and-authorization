@@ -2,18 +2,17 @@ import express from "express";
 import dotenv from "dotenv";
 
 import { connectDB } from "./db/connectDB.js";
-import authRouter from "./routes/auth.route.js"
+import authRouter from "./routes/auth.route.js";
 
 dotenv.config();
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-app.get("/", (req, res) => {
-  res.send("Authentication and Authorization");
-});
+app.use(express.json());
 
-app.use("/api/auth",authRouter)
+app.use("/api/auth", authRouter);
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
   connectDB();
-  console.log("Server is runngin on port 5000");
+  console.log("Server is runngin on port: ", PORT);
 });
