@@ -2,6 +2,7 @@ import { User } from "../models/user.model.js";
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
 import bcryptjs from "bcryptjs";
 import { sendVerificationEmail, sendWelcomeEmail } from "../mailtrap/email.js";
+import { json } from "express";
 
 export const signup = async (req, res) => {
   const { email, password, name } = req.body;
@@ -77,8 +78,15 @@ export const verifyEmail = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Email verified successfully",
+      user: {
+        ...user._doc,
+        password: undefined,
+      },
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log("error in verifyEmail");
+    res.status(500), json({ success: false, message: "Server Error" });
+  }
 };
 
 export const login = async (req, res) => {
@@ -86,5 +94,6 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  res.send("Logout route");
+  res.clearCookie("token");
+  res.status(200).json({ success: true, message: "Logged out successfully" });
 };
