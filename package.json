@@ -4,7 +4,9 @@
   "description": "",
   "main": "backend/index.js",
   "scripts": {
-    "dev": "nodemon backend/index.js"
+    "dev": "cross-env NODE_ENV=development nodemon backend/index.js",
+    "start": "cross-env NODE_ENV=production node backend/index.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "crypto": "^1.0.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
