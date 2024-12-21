@@ -134,4 +134,4 @@ This project is licensed under the MIT License. 📄
 ## 📧 Contact  
 
 For any inquiries or feedback, feel free to reach out:  
-📬 Email: [your-jspshehan@gmail.com](mailto:your-jspshehan@gmail.com)  
+📬 Email: [jspshehan@gmail.com](mailto:jspshehan@gmail.com)  
